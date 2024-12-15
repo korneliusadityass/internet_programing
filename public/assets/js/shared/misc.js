@@ -53,33 +53,6 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
       $("#sidebar > .nav > .nav-item").find('.collapse.show').collapse('hide');
     });
 
-    function appendBanner() {
-      if ($.cookie('view-pro-banner')!="true") {
-        $("body").addClass("purchase-banner-active");
-        $("body").prepend('\
-          <div class= "item-purchase-banner">\
-            <p class="banner-text">Free 24/7 customer support, updates, and more with this template!</p>\
-              <a href="https://www.bootstrapdash.com/product/og-star-admin-pro/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class= "banner-button btn btn-primary btn-icon">\
-                <i class="mdi mdi-cart"></i> Get Pro\
-              </a>\
-              <a href="https://www.bootstrapdash.com/product/og-star-admin-pro/" class="text-white ml-auto mr-3"><i class="mdi mdi-home"></i></span></a>\
-              <span class="toggler-close"><i class="mdi mdi-close"></i></span>\
-          </div>\
-        ')
-        $(".item-purchase-banner .toggler-close").on("click", function () {
-          $(".item-purchase-banner").slideUp(300);
-          $("body").removeClass("purchase-banner-active");
-
-          var date = new Date();
-          date.setTime(date.getTime() + 24 * 60 * 60 * 1000); 
-          $.cookie('view-pro-banner', "true", { expires: date });
-
-        });
-      }
-    }
-
-    appendBanner();
-
     //checkbox and radios
     $(".form-check label,.form-radio label").append('<i class="input-helper"></i>');
 

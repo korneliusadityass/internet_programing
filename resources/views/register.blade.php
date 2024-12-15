@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
@@ -34,38 +34,22 @@
                 <form action="#">
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="email" class="form-control" placeholder=" Enter Email">
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <i class="mdi mdi-check-circle-outline"></i>
+                            <i class="fa-solid fa-user"></i>
                         </span>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input type="password" class="form-control" placeholder="Enter Password">
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <i class="mdi mdi-check-circle-outline"></i>
+                            <i class="fa-solid fa-lock"></i>
                         </span>
                       </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <input type="password" class="form-control" placeholder="Confirm Password">
-                      <div class="input-group-append">
-                        <span class="input-group-text">
-                          <i class="mdi mdi-check-circle-outline"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group d-flex justify-content-center">
-                    <div class="form-check form-check-flat mt-0">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" checked> I agree to the terms </label>
                     </div>
                   </div>
                   <div class="form-group">
@@ -73,7 +57,7 @@
                   </div>
                   <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Already have and account ?</span>
-                    <a href="login.html" class="text-black text-small">Login</a>
+                    <a href="login" class="text-black text-small">Login</a>
                   </div>
                 </form>
               </div>

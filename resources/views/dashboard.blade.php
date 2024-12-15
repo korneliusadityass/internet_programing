@@ -13,7 +13,7 @@
   <link rel="shortcut icon" href="https://demo.bootstrapdash.com/star-laravel-pro/template/favicon.ico">
 
   <!-- plugin css -->
-  <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/@mdi/font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/perfect-scrollbar/perfect-scrollbar.css">
   <!-- end plugin css -->
 
@@ -29,9 +29,9 @@
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
     <a class="navbar-brand brand-logo" href="https://demo.bootstrapdash.com/star-laravel-pro/template">
-    <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo"></a>
+    <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" style="height: 40px!important; width: 100%!important;" alt="logo"></a>
     <a class="navbar-brand brand-logo-mini" href="https://demo.bootstrapdash.com/star-laravel-pro/template">
-      <img src="{{ asset('assets/images/—Pngtree—leo horoscope constellations background_1368811.jpg') }}" alt="logo"> </a>
+      <img src="{{ asset('assets/images/—Pngtree—leo horoscope constellations background_1368811.jpg') }}" style="height: 40px!important; width: 100%!important;" alt="logo"> </a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -39,9 +39,11 @@
     </button>
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item dropdown d-none d-xl-inline-block">
-        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
           <span class="profile-text d-none d-md-inline-flex">Richard V.Welsh !</span>
-          <img class="img-xs rounded-circle" src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/images/faces/face8.jpg" alt="Profile image"> </a>
+          <img class="img-xs rounded-circle" src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/images/faces/face8.jpg" alt="Profile image">
+          <i class="fa-solid fa-caret-down" style="font-size: 15px;"></i>
+        </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <a class="dropdown-item p-0">
             <div class="d-flex border-bottom w-100 justify-content-center">
@@ -64,7 +66,7 @@
       </li>
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-      <span class="mdi mdi-menu icon-menu"></span>
+        <i class="fa-solid fa-caret-down"></i>
     </button>
   </div>
 </nav>
@@ -137,19 +139,19 @@
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="https://demo.bootstrapdash.com/star-laravel-pro/template">
-        <i class="menu-icon mdi mdi-television"></i>
+        <i class="menu-icon fa-solid fa-house"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">
-        <i class="menu-icon mdi mdi-account-box-multiple"></i>
+        <i class="menu-icon fa-solid fa-book"></i>
         <span class="menu-title">Pegawai</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">
-        <i class="menu-icon mdi mdi-information-outline"></i>
+        <i class="menu-icon fa-solid fa-globe"></i>
         <span class="menu-title">About</span>
       </a>
     </li>
@@ -161,14 +163,14 @@
     <!-- Row for Product Analysis Chart -->
     <div class="row justify-content-center">
       <div class="col-md-12 grid-margin">
-        <div class="card text-center" style="position: relative; height: 500px;">
+        <div class="card text-center" style="position: relative; height: 80vh;">
           <!-- Logo Utama di Tengah -->
-          <div class="card-body d-flex align-items-center justify-content-center" style="margin-bottom: 150px;">
-          <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo">
+          <div class="card-body d-flex align-items-center justify-content-center" style="margin-bottom: 300px;">
+            <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo">
           </div>
 
           <!-- Gambar Kecil di Tengah Bawah -->
-          <div class="position-absolute d-flex justify-content-center align-items-center" style="bottom: 10px; left: 0; right: 0; gap: 20px;">
+          <div class="position-absolute d-flex justify-content-center align-items-center" style="bottom: 50px; left: 0; right: 0; gap: 20px;">
             <img src="{{ asset('assets/images/pexels-lukas-577210.jpg') }}" alt="logo" class="img-fluid" style="max-width: 250px; height: auto;">
             <img src="{{ asset('assets/images/image-56.png') }}" alt="logo" class="img-fluid" style="max-width: 250px; height: auto;">
             <img src="{{ asset('assets/images/istockphoto-1285583141-170667a.jpg') }}" alt="logo" class="img-fluid" style="max-width: 250px; height: auto;">
@@ -177,17 +179,17 @@
       </div>
     </div>
   </div>
+  <footer class="footer">
+    <div class="container-fluid clearfix">
+      <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2024. All rights reserved.</span>
+      </span>
+    </div>
+  </footer>
 </div>
 
 
 
 </div>
-<footer class="footer">
-  <div class="container-fluid clearfix">
-    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2024. All rights reserved.</span>
-    </span>
-  </div>
-</footer>
 <!-- <div class="card-body d-flex align-items-center justify-content-center">
           <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo"></a>
           </div> -->

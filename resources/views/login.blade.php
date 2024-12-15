@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
@@ -29,12 +29,12 @@
               <div class="auto-form-wrapper">
                 <form action="#">
                   <div class="form-group">
-                    <label class="label">Username</label>
+                    <label class="label">Email</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Username">
+                      <input type="email" class="form-control" placeholder="Enter Email">
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <i class="mdi mdi-check-circle-outline"></i>
+                            <i class="fa-solid fa-user"></i>
                         </span>
                       </div>
                     </div>
@@ -42,10 +42,10 @@
                   <div class="form-group">
                     <label class="label">Password</label>
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="*********">
+                      <input type="password" class="form-control" placeholder="Enter Password">
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <i class="mdi mdi-check-circle-outline"></i>
+                            <i class="fa-solid fa-lock"></i>
                         </span>
                       </div>
                     </div>
@@ -53,36 +53,13 @@
                   <div class="form-group">
                     <button class="btn btn-primary submit-btn btn-block">Login</button>
                   </div>
-                  <div class="form-group d-flex justify-content-between">
-                    <div class="form-check form-check-flat mt-0">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input" checked> Keep me signed in </label>
-                    </div>
-                    <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
-                  </div>
-                  <div class="form-group">
-                    <button class="btn btn-block g-login">
-                      <img class="mr-3" src="../../../assets/images/file-icons/icon-google.svg" alt="">Log in with Google</button>
-                  </div>
                   <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Not a member ?</span>
-                    <a href="register.html" class="text-black text-small">Create new account</a>
+                    <a href="register" class="text-black text-small">Create new account</a>
                   </div>
                 </form>
               </div>
-              <ul class="auth-footer">
-                <li>
-                  <a href="#">Conditions</a>
-                </li>
-                <li>
-                  <a href="#">Help</a>
-                </li>
-                <li>
-                  <a href="#">Terms</a>
-                </li>
-              </ul>
-              <p class="footer-text text-center">copyright © 2020 Bootstrapdash. All rights reserved.</p>
-              <p class="footer-text text-center text-center"><a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank"> Free Bootstrap template </a> from BootstrapDash templates</p>
+              <p class="footer-text text-center">copyright © 2024. All rights reserved.</p>
             </div>
           </div>
         </div>
@@ -100,5 +77,95 @@
     <script src="{{ asset('assets/js/shared/misc.js') }}"></script>
     <!-- endinject -->
     <script src="{{ asset('assets/js/shared/jquery.cookie.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+        demo.checkFullPageBackgroundImage();
+        $(".btn-lg").click( function() {
+
+var email = $("#email").val();
+var password = $("#password").val();
+var token = $("meta[name='csrf-token']").attr("content");
+
+if(email.length == "") {
+
+    Swal.fire({
+        type: 'warning',
+        title: 'Oops...',
+        text: 'Alamat Email Wajib Diisi !'
+    });
+
+} else if(password.length == "") {
+
+    Swal.fire({
+        type: 'warning',
+        title: 'Oops...',
+        text: 'Password Wajib Diisi !'
+    });
+
+} else {
+
+    $.ajax({
+
+        url: "{{ route('actionlogin') }}",
+        type: "POST",
+        dataType: "JSON",
+        cache: false,
+        data: {
+            "email": email,
+            "password": password,
+            "_token": token
+        },
+
+        success:function(response){
+
+            if (response.success) {
+
+                Swal.fire({
+                    type: 'success',
+                    title: 'Login Berhasil!',
+                    text: 'Anda akan di arahkan dalam 3 Detik',
+                    timer: 3000,
+                    showCancelButton: false,
+                    showConfirmButton: false
+                })
+                    .then (function() {
+                        window.location.href = "{{ route('home') }}";
+                    });
+
+            } else {
+
+                console.log(response.success);
+
+                Swal.fire({
+                    type: 'error',
+                    title: 'Login Gagal!',
+                    text: 'silahkan coba lagi!'
+                });
+
+            }
+
+            console.log(response);
+
+        },
+
+        error:function(response){
+
+            Swal.fire({
+                type: 'error',
+                title: 'Opps!',
+                text: 'server error!'
+            });
+
+            console.log(response);
+
+        }
+
+    });
+
+}
+
+});
+        });
+    </script>
   </body>
 </html>
