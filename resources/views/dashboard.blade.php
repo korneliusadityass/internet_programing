@@ -154,12 +154,7 @@
       </a>
     </li>
   </ul>
-  <footer class="footer">
-  <div class="container-fluid clearfix">
-    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2024. All rights reserved.</span>
-    </span>
-  </div>
-</footer>
+
 </nav>
 <div class="main-panel">
   <div class="content-wrapper">
@@ -187,6 +182,12 @@
 
 
 </div>
+<footer class="footer">
+  <div class="container-fluid clearfix">
+    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2024. All rights reserved.</span>
+    </span>
+  </div>
+</footer>
 <!-- <div class="card-body d-flex align-items-center justify-content-center">
           <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo"></a>
           </div> -->
