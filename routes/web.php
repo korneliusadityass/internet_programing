@@ -16,3 +16,6 @@ Route::post('actionregister', [App\Http\Controllers\RegisterController::class, '
 Route::get('dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+Route::get('aboutus', function () {
+    return view('aboutus');
+})->name('aboutus');
