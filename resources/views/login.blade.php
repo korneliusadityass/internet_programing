@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/shared/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="https://demo.bootstrapdash.com/star-laravel-pro/template/favicon.ico">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <body>
     <div class="container-scroller">
@@ -31,7 +32,7 @@
                   <div class="form-group">
                     <label class="label">Email</label>
                     <div class="input-group">
-                      <input type="email" class="form-control" placeholder="Enter Email">
+                      <input type="email" class="form-control" id="email" placeholder="Enter Email">
                       <div class="input-group-append">
                         <span class="input-group-text">
                             <i class="fa-solid fa-user"></i>
@@ -42,7 +43,7 @@
                   <div class="form-group">
                     <label class="label">Password</label>
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="Enter Password">
+                      <input type="password" class="form-control" id="password" placeholder="Enter Password">
                       <div class="input-group-append">
                         <span class="input-group-text">
                             <i class="fa-solid fa-lock"></i>
@@ -51,7 +52,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-primary submit-btn btn-block">Login</button>
+                    <button  class="btn btn-primary btn-round btn-lg btn-block btn-login mb-3">{{ __('Login') }}</button>
                   </div>
                   <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Not a member ?</span>
@@ -77,94 +78,98 @@
     <script src="{{ asset('assets/js/shared/misc.js') }}"></script>
     <!-- endinject -->
     <script src="{{ asset('assets/js/shared/jquery.cookie.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
     <script>
         $(document).ready(function() {
-        demo.checkFullPageBackgroundImage();
-        $(".btn-lg").click( function() {
 
-var email = $("#email").val();
-var password = $("#password").val();
-var token = $("meta[name='csrf-token']").attr("content");
+            $(".btn-login").click( function() {
 
-if(email.length == "") {
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var token = $("meta[name='csrf-token']").attr("content");
 
-    Swal.fire({
-        type: 'warning',
-        title: 'Oops...',
-        text: 'Alamat Email Wajib Diisi !'
-    });
+                if(email.length == "") {
 
-} else if(password.length == "") {
-
-    Swal.fire({
-        type: 'warning',
-        title: 'Oops...',
-        text: 'Password Wajib Diisi !'
-    });
-
-} else {
-
-    $.ajax({
-
-        url: "{{ route('actionlogin') }}",
-        type: "POST",
-        dataType: "JSON",
-        cache: false,
-        data: {
-            "email": email,
-            "password": password,
-            "_token": token
-        },
-
-        success:function(response){
-
-            if (response.success) {
-
-                Swal.fire({
-                    type: 'success',
-                    title: 'Login Berhasil!',
-                    text: 'Anda akan di arahkan dalam 3 Detik',
-                    timer: 3000,
-                    showCancelButton: false,
-                    showConfirmButton: false
-                })
-                    .then (function() {
-                        window.location.href = "{{ route('home') }}";
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Alamat Email Wajib Diisi !'
                     });
 
-            } else {
+                } else if(password.length == "") {
 
-                console.log(response.success);
+                    Swal.fire({
+                        type: 'warning',
+                        title: 'Oops...',
+                        text: 'Password Wajib Diisi !'
+                    });
 
-                Swal.fire({
-                    type: 'error',
-                    title: 'Login Gagal!',
-                    text: 'silahkan coba lagi!'
-                });
+                } else {
 
-            }
+                    $.ajax({
 
-            console.log(response);
+                        url: "{{ route('actionlogin') }}",
+                        type: "POST",
+                        dataType: "JSON",
+                        cache: false,
+                        data: {
+                            "email": email,
+                            "password": password,
+                            "_token": token
+                        },
 
-        },
+                        success:function(response){
 
-        error:function(response){
+                            if (response.success) {
 
-            Swal.fire({
-                type: 'error',
-                title: 'Opps!',
-                text: 'server error!'
+                                Swal.fire({
+                                    type: 'success',
+                                    title: 'Login Berhasil!',
+                                    text: 'Anda akan di arahkan dalam 3 Detik',
+                                    timer: 3000,
+                                    showCancelButton: false,
+                                    showConfirmButton: false
+                                })
+                                    .then (function() {
+                                        window.location.href = "{{ route('dashboard') }}";
+                                    });
+
+                            } else {
+
+                                console.log(response.success);
+
+                                Swal.fire({
+                                    type: 'error',
+                                    title: 'Login Gagal!',
+                                    text: 'silahkan coba lagi!'
+                                });
+
+                            }
+
+                            console.log(response);
+
+                        },
+
+                        error:function(response){
+
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Opps!',
+                                text: 'server error!'
+                            });
+
+                            console.log(response);
+
+                        }
+
+                    });
+
+                }
+
             });
 
-            console.log(response);
-
-        }
-
-    });
-
-}
-
-});
         });
     </script>
   </body>

@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\UsersModel;
+use App\Models\department;
+use App\Models\User;
+use App\Models\role;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +24,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        UsersModel::create([
+        User::create([
             'nama' => 'Admin',
             'email' => 'a@gmail.com',
             'alamat' => 'Jalan Mentari Raya Nomor 123, Perumahan Harmoni Indah, Jakarta Selatan 12345',
@@ -34,5 +36,17 @@ class DatabaseSeeder extends Seeder
             'status' => 0,
             'password' => Hash::make('admin')
         ]);
+
+        Role::create(['nama' => 'Admin']);
+        Role::create(['nama' => 'HR']);
+        Role::create(['nama' => 'Manager']);
+        Role::create(['nama' => 'Pegawai']);
+        Role::create(['nama' => 'Guest']);
+
+        department::create(['nama' => 'All']);
+        department::create(['nama' => 'Perikanan']);
+        department::create(['nama' => 'Pertenakan']);
+        department::create(['nama' => 'Pertanian']);
+        department::create(['nama' => 'Perkebunan']);
     }
 }

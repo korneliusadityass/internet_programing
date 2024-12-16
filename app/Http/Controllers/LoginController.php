@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsersModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class LoginController extends Controller
         $email      = $request->input('email');
         $password   = $request->input('password');
 
-        if(Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
             return response()->json([
                 'success' => true
             ], 200);
@@ -31,7 +32,6 @@ class LoginController extends Controller
                 'message' => 'Login Failed!'
             ], 401);
         }
-
     }
 
 
@@ -42,6 +42,6 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         // Use route helper with the named route
-        return redirect()->route('login')->with('message','Successfully Logout!');
+        return redirect()->route('login')->with('message', 'Successfully Logout!');
     }
 }

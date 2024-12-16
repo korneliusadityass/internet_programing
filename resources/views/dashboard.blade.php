@@ -35,7 +35,7 @@
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-      <span class="mdi mdi-menu"></span>
+        <i class="fa-solid fa-bars"></i>
     </button>
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item dropdown d-none d-xl-inline-block">
@@ -61,7 +61,7 @@
           <a class="dropdown-item mt-2"> Manage Accounts </a>
           <a class="dropdown-item"> Change Password </a>
           <a class="dropdown-item"> Check Inbox </a>
-          <a class="dropdown-item"> Sign Out </a>
+          <a href="{{ route('actionlogout') }}" class="dropdown-item"> Sign Out </a>
         </div>
       </li>
     </ul>

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <!-- End Layout styles -->
     <link rel="shortcut icon" href="https://demo.bootstrapdash.com/star-laravel-pro/template/favicon.ico">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <body>
     <div class="container-scroller">
@@ -34,7 +35,7 @@
                 <form action="#">
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="email" class="form-control" placeholder=" Enter Email">
+                      <input type="text" id="nama" class="form-control" placeholder=" Enter Name">
                       <div class="input-group-append">
                         <span class="input-group-text">
                             <i class="fa-solid fa-user"></i>
@@ -44,7 +45,17 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="Enter Password">
+                      <input type="email" id="email" class="form-control" placeholder=" Enter Email">
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-at"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="password" id="password" class="form-control" placeholder="Enter Password">
                       <div class="input-group-append">
                         <span class="input-group-text">
                             <i class="fa-solid fa-lock"></i>
@@ -53,11 +64,11 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-primary submit-btn btn-block">Register</button>
+                    <button class="btn btn-primary btn-register submit-btn btn-block">Register</button>
                   </div>
                   <div class="text-block text-center my-3">
                     <span class="text-small font-weight-semibold">Already have and account ?</span>
-                    <a href="login" class="text-black text-small">Login</a>
+                    <a href="/" class="text-black text-small">Login</a>
                   </div>
                 </form>
               </div>
@@ -78,5 +89,200 @@
     <script src="{{ asset('assets/js/shared/misc.js') }}"></script>
     <!-- endinject -->
     <script src="{{ asset('assets/js/shared/jquery.cookie.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
+
+{{-- <script>
+    $(document).ready(function() {
+
+        $(".btn-register").click( function() {
+
+            var nama = $("#nama").val();
+            var email    = $("#email").val();
+            var password = $("#password").val();
+            var token = $("meta[name='csrf-token']").attr("content");
+
+            if (nama.length == "") {
+
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Nama Lengkap Wajib Diisi !'
+                });
+
+            } else if(email.length == "") {
+
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Alamat Email Wajib Diisi !'
+                });
+
+            } else if(password.length == "") {
+
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Oops...',
+                    text: 'Password Wajib Diisi !'
+                });
+
+            } else {
+
+                //ajax
+                $.ajax({
+
+                    url: "{{ route('actionregister') }}",
+                    type: "POST",
+                    cache: false,
+                    data: {
+                        "nama": nama,
+                        "email": email,
+                        "password": password,
+                        "_token": token
+                    },
+
+                    success:function(response){
+
+                        if (response.success) {
+
+                            Swal.fire({
+                                type: 'success',
+                                title: 'Register Berhasil!',
+                                text: 'silahkan login!'
+                                    timer: 3000,
+                            });.then (function() {
+                                        window.location.href = "{{ route('login') }}";
+                                    });
+
+                            $("#nama").val('');
+                            $("#email").val('');
+                            $("#password").val('');
+
+                        } else {
+
+                            Swal.fire({
+                                type: 'error',
+                                title: 'Register Gagal!',
+                                text: 'silahkan coba lagi!'
+                            });
+
+                        }
+
+                        console.log(response);
+
+                    },
+
+                    error:function(response){
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Opps!',
+                            text: 'server error!'
+                        });
+                    }
+
+                })
+
+            }
+
+        });
+
+    });
+</script> --}}
+<script>
+    $(document).ready(function() {
+
+        $(".btn-register").click(function() {
+
+            var nama = $("#nama").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
+            var token = $("meta[name='csrf-token']").attr("content");
+
+            if (nama.length == "") {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Nama Lengkap Wajib Diisi !'
+                });
+
+            } else if (email.length == "") {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Alamat Email Wajib Diisi !'
+                });
+
+            } else if (password.length == "") {
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Password Wajib Diisi !'
+                });
+
+            } else {
+
+                // AJAX
+                $.ajax({
+                    url: "{{ route('actionregister') }}",
+                    type: "POST",
+                    cache: false,
+                    data: {
+                        "nama": nama,
+                        "email": email,
+                        "password": password,
+                        "_token": token
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                type: 'success',
+                                title: 'Register Berhasil!',
+                                text: 'Silakan login dalam 3 detik atau klik tombol di bawah!',
+                                timer: 3000, // Timer 3 detik
+                                showConfirmButton: true,
+                                confirmButtonText: 'Ke Halaman Login'
+                            }).then((result) => {
+                                // Jika pengguna klik tombol
+                                if (result.isConfirmed) {
+                                    window.location.href = "{{ route('login') }}";
+                                }
+                            });
+
+                            // Pengalihan otomatis setelah 3 detik jika tidak klik tombol
+                            setTimeout(() => {
+                                window.location.href = "{{ route('login') }}";
+                            }, 3000);
+
+                            // Reset form
+                            $("#nama").val('');
+                            $("#email").val('');
+                            $("#password").val('');
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Register Gagal!',
+                                text: 'Silakan coba lagi!'
+                            });
+                        }
+
+                        console.log(response);
+                    },
+                    error: function(response) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops!',
+                            text: 'Server error!'
+                        });
+                    }
+                });
+            }
+        });
+    });
+</script>
+
   </body>
 </html>
