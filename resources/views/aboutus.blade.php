@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('layout.app')
+@section('content')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -39,14 +35,15 @@
         }
 
         ul {
-            list-style: none;
             padding: 0;
             margin: 0;
+            list-style-type: none; /* Pastikan ini ada di sini */
         }
 
         li {
             font-size: 18px;
             line-height: 1.6;
+            list-style-type: none; /* Menambahkan ini jika belum hilang */
         }
 
         .gambar-bawah {
@@ -61,34 +58,24 @@
             height: auto;
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Logo Utama -->
-        <div class="logo-utama">
-            <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo" style="max-width: 300px;">
-        </div>
-
-        <!-- About Us -->
-        <div class="about-us">
-            <h1>About Us</h1>
-            <ul>
-                <li><strong>Laurensius Patrix Ambarura</strong> - 18.K1.0066</li>
-                <li><strong>Vincencius Ferrer Iglasias</strong> - 18.K1.0068</li>
-                <li><strong>Yanto Yordan Kotouki</strong> - 23.K1.0055</li>
-            </ul>
-        </div>
-
-        <!-- Gambar Bawah -->
-        <div class="gambar-bawah">
-            <img src="{{ asset('assets/images/istockphoto-1285583141-170667a.jpg') }}" alt="gambar3">
-        </div>
+<div class="container">
+    <!-- Logo Utama -->
+    <div class="logo-utama" style="margin: 20px">
+        <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo" style="max-width: 600px;">
     </div>
-    <footer class="footer">
-    <div class="container-fluid clearfix">
-      <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2024. All rights reserved.</span>
-      </span>
+
+    <!-- About Us -->
+    <div class="about-us">
+        <h1 style="margin: 40px 0px 40px 0px;">About Us</h1>
+        <strong>Laurensius Patrix Ambarura</strong> - 18.K1.0066 <br>
+        <strong>Vincencius Ferrer Iglasias</strong> - 18.K1.0068 <br>
+        <strong>Yanto Yordan Kotouki</strong> - 23.K1.0055 <br>
     </div>
-  </footer>
-</body>
-</html>
+
+    <!-- Gambar Bawah -->
+    <div class="gambar-bawah" style="margin: 40px 0px 50px 0px;">
+        <img src="{{ asset('assets/images/istockphoto-1285583141-170667a.jpg') }}" alt="gambar3">
+    </div>
+</div>
+
+@endsection

@@ -19,3 +19,6 @@ Route::get('dashboard', function () {
 Route::get('aboutus', function () {
     return view('aboutus');
 })->name('aboutus');
+Route::get('pegawai', function () {
+    return view('pegawai');
+})->name('pegawai');
