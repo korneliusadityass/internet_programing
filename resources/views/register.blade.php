@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
+    <title>SJG || {{  $title }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
@@ -21,7 +21,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="https://demo.bootstrapdash.com/star-laravel-pro/template/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <body>
@@ -93,102 +93,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 
-{{-- <script>
-    $(document).ready(function() {
-
-        $(".btn-register").click( function() {
-
-            var nama = $("#nama").val();
-            var email    = $("#email").val();
-            var password = $("#password").val();
-            var token = $("meta[name='csrf-token']").attr("content");
-
-            if (nama.length == "") {
-
-                Swal.fire({
-                    type: 'warning',
-                    title: 'Oops...',
-                    text: 'Nama Lengkap Wajib Diisi !'
-                });
-
-            } else if(email.length == "") {
-
-                Swal.fire({
-                    type: 'warning',
-                    title: 'Oops...',
-                    text: 'Alamat Email Wajib Diisi !'
-                });
-
-            } else if(password.length == "") {
-
-                Swal.fire({
-                    type: 'warning',
-                    title: 'Oops...',
-                    text: 'Password Wajib Diisi !'
-                });
-
-            } else {
-
-                //ajax
-                $.ajax({
-
-                    url: "{{ route('actionregister') }}",
-                    type: "POST",
-                    cache: false,
-                    data: {
-                        "nama": nama,
-                        "email": email,
-                        "password": password,
-                        "_token": token
-                    },
-
-                    success:function(response){
-
-                        if (response.success) {
-
-                            Swal.fire({
-                                type: 'success',
-                                title: 'Register Berhasil!',
-                                text: 'silahkan login!'
-                                    timer: 3000,
-                            });.then (function() {
-                                        window.location.href = "{{ route('login') }}";
-                                    });
-
-                            $("#nama").val('');
-                            $("#email").val('');
-                            $("#password").val('');
-
-                        } else {
-
-                            Swal.fire({
-                                type: 'error',
-                                title: 'Register Gagal!',
-                                text: 'silahkan coba lagi!'
-                            });
-
-                        }
-
-                        console.log(response);
-
-                    },
-
-                    error:function(response){
-                        Swal.fire({
-                            type: 'error',
-                            title: 'Opps!',
-                            text: 'server error!'
-                        });
-                    }
-
-                })
-
-            }
-
-        });
-
-    });
-</script> --}}
 <script>
     $(document).ready(function() {
 
