@@ -1,14 +1,19 @@
 {
     "version": 2,
+    "framework": null,
     "functions": {
-        "api/index.php": {
-            "runtime": "vercel-php@0.6.0"
-        }
+        "api/index.php": { "runtime": "vercel-php@0.6.0" }
     },
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "api/index.php"
+            "dest": "/api/index.php"
+        }
+    ],
+    "builds": [
+        {
+            "src": "public//*",
+            "use": "@vercel/static"
         }
     ],
     "env": {
@@ -16,7 +21,7 @@
         "APP_DEBUG": "true",
         "APP_URL": "https://example-atomik.vercel.app/",
         "APP_CONFIG_CACHE": "/tmp/config.php",
-        "APP_EVENT_CACHE": "/tmp/events.php",
+        "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
         "APP_ROUTES_CACHE": "/tmp/routes.php",
         "APP_SERVICES_CACHE": "/tmp/services.php",
@@ -24,6 +29,5 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
-    },
-    "outputDirectory": "public"
+    }
 }
