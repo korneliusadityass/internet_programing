@@ -50,7 +50,7 @@
                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-gaji"></div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="{{ Auth::id() == 1 ? '' : 'display:none;' }}">
                     <label class="control-label">Password</label>
                     <input type="password" class="form-control" id="password">
                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-password"></div>
@@ -64,7 +64,7 @@
                     <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-role"></div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group"  style="{{ Auth::user()->id_role == 1 ? '' : 'display:none;' }}">
                     <label for="department" class="control-label">Department</label>
                     <select class="form-control" id="department">
 

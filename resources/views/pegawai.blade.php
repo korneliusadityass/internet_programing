@@ -4,7 +4,12 @@
 <div class="card">
     <div class="card-body">
         <h2 style="margin-bottom:20px; font-weight:bold">DAFTAR PEGAWAI</h2>
-        <a href="javascript:void(0)" class="btn btn-outline-primary mb-2" style="margin-bottom: 20px" id="btn-create-post"><i class="fa-solid fa-plus"></i> TAMBAH PEGAWAI</a>
+        @if(auth()->user()->id_role != 4 && auth()->user()->id_role != 5)
+            <a href="javascript:void(0)" class="btn btn-outline-primary mb-2" style="margin-bottom: 20px" id="btn-create-post">
+                <i class="fa-solid fa-plus"></i> TAMBAH PEGAWAI
+            </a>
+        @endif
+
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
@@ -32,8 +37,9 @@
                         <td>{{ $pgw->role ?? '-' }}</td>
                         <td>{{ $pgw->department ?? '-' }}</td>
                         <td>
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-warning">EDIT</a>
-                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">Hapus</a>
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-warning"
+                                @if(in_array($pgw->id_role, [1, 2, 3, 5])) hidden @endif>EDIT</a>
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger" style="{{ in_array(Auth::user()->id_role, [1, 2]) ? '' : 'display:none;' }}">Hapus</a>
                         </td>
                     </tr>
                 @endforeach

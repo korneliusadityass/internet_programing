@@ -20,30 +20,51 @@ class PegawaiController extends Controller
      * @return void
      */
     public function index()
-    {
-        $pegawai = DB::table('users as a')
-            ->leftJoin('role as b', 'b.id', '=', 'a.id_role')
-            ->leftJoin('department as c', 'c.id', '=', 'a.id_department')
-            ->select(
-                'a.*',
-                'b.nama as role',
-                'c.nama as department'
-            )
-            ->orderBy('a.created_at', 'desc') // Urutkan dari terbaru berdasarkan created_at
+{
+    // Mendapatkan ID role dari sesi atau data pengguna yang sedang login
+    $roleId = auth()->user()->id_role;
+
+    // Mulai query
+    $pegawai = DB::table('users as a')
+        ->leftJoin('role as b', 'b.id', '=', 'a.id_role')
+        ->leftJoin('department as c', 'c.id', '=', 'a.id_department')
+        ->select(
+            'a.*',
+            'b.nama as role',
+            'c.nama as department'
+        );
+
+    // Kondisi berdasarkan role
+    if ($roleId == 1 || $roleId == 2) {
+        // Role 1 dan 2: Menampilkan semua data
+        $pegawai = $pegawai->orderBy('a.created_at', 'desc')
             ->paginate(10);
-        foreach ($pegawai as $pgw) {
-            $pgw->tanggal_lahir = Carbon::parse($pgw->tanggal_lahir)->translatedFormat('d F Y');
-        }
-
-        // Data tambahan untuk view
-        $data = [
-            'title' => "Data Pegawai",
-            'users' => $pegawai
-        ];
-
-        // Return view with data
-        return view('pegawai', compact('pegawai'), $data);
+    } elseif ($roleId == 3) {
+        // Role 3: Menampilkan data berdasarkan id_department
+        $pegawai = $pegawai->where('a.id_department', auth()->user()->id_department)
+            ->orderBy('a.created_at', 'desc')
+            ->paginate(10);
+    } elseif ($roleId == 4 || $roleId == 5) {
+        // Role 4 dan 5: Menampilkan hanya data mereka sendiri
+        $pegawai = $pegawai->where('a.id', auth()->user()->id)
+            ->orderBy('a.created_at', 'desc')
+            ->paginate(10);
     }
+
+    // Format tanggal lahir
+    foreach ($pegawai as $pgw) {
+        $pgw->tanggal_lahir = Carbon::parse($pgw->tanggal_lahir)->translatedFormat('d F Y');
+    }
+
+    // Data tambahan untuk view
+    $data = [
+        'title' => "Data Pegawai",
+        'users' => $pegawai
+    ];
+
+    // Return view with data
+    return view('pegawai', compact('pegawai'), $data);
+}
 
     /**
      * show
@@ -70,10 +91,14 @@ class PegawaiController extends Controller
     }
 
     public function caridepartment()
-    {
-        $department = department::orderBy('nama', 'asc')->get();
-        return response()->json(['data' => $department]);
-    }
+{
+    // Exclude department with name 'all'
+    $department = Department::where('nama', '!=', 'all')
+                             ->orderBy('nama', 'asc')
+                             ->get();
+
+    return response()->json(['data' => $department]);
+}
 
     /**
      * store
@@ -90,10 +115,8 @@ class PegawaiController extends Controller
             'alamat'   => 'required',
             'tanggal_lahir' => 'required|date',
             'nohp' => 'required|string|max:16',
-            'password'   => 'required',
             'gaji' => 'required|numeric',
-            'id_role'   => 'required',
-            'id_department'   => 'required'
+            'id_role'   => 'required'
         ]);
 
         // Check if validation fails
