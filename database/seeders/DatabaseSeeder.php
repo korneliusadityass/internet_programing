@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             'nohp' => '081234567890',
             'id_role' => 1,
             'id_department' => 1,
-            'status' => 0,
+            'status' => 1,
             'password' => Hash::make('admin')
         ]);
 

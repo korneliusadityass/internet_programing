@@ -17,11 +17,10 @@
                 <th>No HP</th>
                 <th>Role</th>
                 <th>Department</th>
-                <th>Status</th>
                 <th>action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="table-posts">
                 @foreach($pegawai as $pgw)
                     <tr id="index_{{ $pgw->id }}">
                         <td>{{ $pgw->nama }}</td>
@@ -32,13 +31,6 @@
                         <td>{{ $pgw->nohp }}</td>
                         <td>{{ $pgw->role ?? '-' }}</td>
                         <td>{{ $pgw->department ?? '-' }}</td>
-                        <td>
-                            @if($pgw->status == 1)
-                                <label class="badge badge-success">Aktif</label>
-                            @else
-                                <label class="badge badge-danger">Nonaktif</label>
-                            @endif
-                        </td>
                         <td>
                             <button class="btn btn-outline-warning">Edit</button>
                             <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">DELETE</a>

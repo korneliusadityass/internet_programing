@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('alamat')->nullable();
             $table->string('gaji')->nullable();
-            $table->string('tanggal_lahir')->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->string('nohp')->nullable();
             $table->string('password');
             $table->string('status')->nullable();

@@ -12,8 +12,11 @@
   <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
   <!-- plugin css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/perfect-scrollbar/perfect-scrollbar.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+
   <!-- end plugin css -->
 
     <!-- <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/plugin.css"> -->
@@ -25,6 +28,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+
   <style>
     .slider.round {
   border-radius: 34px;
@@ -226,5 +232,32 @@ input:checked + .slider:before {
   <!-- end common js -->
 
     <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/dashboard.js"></script> --}}
+    <script type="text/javascript">
+        // Konfigurasi bahasa Indonesia
+        $.fn.datepicker.dates['id'] = {
+            days: ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+            daysShort: ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"],
+            daysMin: ["Mi", "Se", "Se", "Ra", "Ka", "Ju", "Sa"],
+            months: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"],
+            monthsShort: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+            today: "Hari ini",
+            clear: "Hapus",
+            format: "dd MM yyyy",
+            titleFormat: "MM yyyy", /* Tampilan di header */
+            weekStart: 0
+        };
+
+        // Inisialisasi datepicker dengan bahasa Indonesia
+        $('.date').datepicker({
+            format: 'dd MM yyyy',
+            autoclose: true,
+            todayHighlight: true,
+            language: 'id',
+        }).on('changeDate', function (e) {
+            console.log('Tanggal yang dipilih: ' + e.format('dd MM yyyy'));
+        }).on('hide', function () {
+            console.log('Kalender ditutup');
+        });
+    </script>
 </body>
 </html>

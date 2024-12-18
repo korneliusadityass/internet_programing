@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class PegawaiController extends Controller
@@ -30,9 +31,9 @@ class PegawaiController extends Controller
             )
             ->orderBy('a.created_at', 'desc') // Urutkan dari terbaru berdasarkan created_at
             ->paginate(10);
-            foreach ($pegawai as $pgw) {
-                $pgw->tanggal_lahir = Carbon::parse($pgw->tanggal_lahir)->translatedFormat('d F Y');
-            }
+        foreach ($pegawai as $pgw) {
+            $pgw->tanggal_lahir = Carbon::parse($pgw->tanggal_lahir)->translatedFormat('d F Y');
+        }
 
         // Data tambahan untuk view
         $data = [
@@ -85,12 +86,12 @@ class PegawaiController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'nama'     => 'required',
-            'email'   => 'required',
+            'email' => 'required|email|unique:users,email',
             'alamat'   => 'required',
-            'nohp'   => 'required',
+            'tanggal_lahir' => 'required|date',
+            'nohp' => 'required|string|max:16',
             'password'   => 'required',
-            'gaji'   => 'required',
-            'status'   => 'required',
+            'gaji' => 'required|numeric',
             'id_role'   => 'required',
             'id_department'   => 'required'
         ]);
@@ -105,15 +106,13 @@ class PegawaiController extends Controller
             'nama'     => $request->nama,
             'email'     => $request->email,
             'alamat'   => $request->alamat,
-            'password'   => $request->password,
+            'password'  => Hash::make($request->password),
             'nohp'   => $request->nohp,
             'gaji'   => $request->gaji,
             'tanggal_lahir'   => $request->tanggal_lahir,
-            'status'   => $request->status,
             'id_role'   => $request->id_role,
             'id_department'   => $request->id_department
         ]);
-
         $post->load('role', 'department');
 
         //return response
@@ -180,5 +179,4 @@ class PegawaiController extends Controller
             'message' => 'Data Pegawai Berhasil Dihapus!.',
         ]);
     }
-
 }
