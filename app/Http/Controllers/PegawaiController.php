@@ -168,6 +168,9 @@ class PegawaiController extends Controller
      * @param  mixed $id
      * @return void
      */
+
+
+
     public function destroy($id)
     {
         //delete post by ID

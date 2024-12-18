@@ -33,7 +33,7 @@
                         <td>{{ $pgw->department ?? '-' }}</td>
                         <td>
                             <button class="btn btn-outline-warning">Edit</button>
-                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">DELETE</a>
+                            <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">Hapus</a>
                         </td>
                     </tr>
                 @endforeach
@@ -42,38 +42,15 @@
           </table>
         </div>
         <div class="row align-items-center d-flex justify-content-between" style="margin-top: 50px">
-            <div class="col-auto">
-                <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">
-                    Showing 1 to 5 of 10 entries
-                </div>
-            </div>
-            <div class="col-auto">
-                <div class="dataTables_paginate paging_simple_numbers" id="order-listing_paginate">
-                    <ul class="pagination">
-                        <li class="paginate_button page-item previous disabled" id="order-listing_previous">
-                            <a href="#" aria-controls="order-listing" data-dt-idx="0" tabindex="0" class="page-link">
-                                Previous
-                            </a>
-                        </li>
-                        <li class="paginate_button page-item active">
-                            <a href="#" aria-controls="order-listing" data-dt-idx="1" tabindex="0" class="page-link">
-                                1
-                            </a>
-                        </li>
-                        <li class="paginate_button page-item ">
-                            <a href="#" aria-controls="order-listing" data-dt-idx="2" tabindex="0" class="page-link">
-                                2
-                            </a>
-                        </li>
-                        <li class="paginate_button page-item next" id="order-listing_next">
-                            <a href="#" aria-controls="order-listing" data-dt-idx="3" tabindex="0" class="page-link">
-                                Next
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="col-auto">
+        <div class="dataTables_info" id="order-listing_info" role="status" aria-live="polite">
+            Menampilkan {{ $pegawai->firstItem() }} hingga {{ $pegawai->lastItem() }} dari {{ $pegawai->total() }} entri
         </div>
+    </div>
+    <div class="col-auto">
+        {{ $pegawai->links('pagination::bootstrap-4') }}
+    </div>
+</div>
     </div>
 </div>
     @include('components.pegawai.modal-create')

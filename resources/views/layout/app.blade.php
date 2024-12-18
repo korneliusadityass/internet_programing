@@ -200,7 +200,7 @@ input:checked + .slider:before {
            </div>
     </div>
   </div>
-  <script>
+  <!-- <script>
     // Saat form disubmit, ubah nilai checkbox
     document.querySelector('form').addEventListener('submit', function(e) {
         var checkbox = document.getElementById('status');
@@ -212,7 +212,7 @@ input:checked + .slider:before {
             checkbox.value = '1';
         }
     });
-</script>
+</script> -->
   <!-- base js -->
   {{-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/js/app.js"></script>
   <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
