@@ -86,7 +86,10 @@
 <script>
     $('body').on('click', '#btn-edit-post', function () {
         let post_id = $(this).data('id');
-        console.log('ID yang akan dihapus:', post_id);
+        $('#gaji-edit').on('input', function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
+        console.log('ID yang akan diedit:', post_id);
         moment.updateLocale('id', {
             months: [
                     "Januari", "Februari", "Maret", "April", "Mei", "Juni",
@@ -191,6 +194,7 @@ $('#update').click(function(e) {
             }
 
             // Proceed with the AJAX call if the date is valid
+            let post_id = $('#post_id').val(); 
             $.ajax({
                 url: `/pegawai/${post_id}`,
                 type: "PUT",

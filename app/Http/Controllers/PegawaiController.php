@@ -86,7 +86,7 @@ class PegawaiController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'nama'     => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|,email',
             'alamat'   => 'required',
             'tanggal_lahir' => 'required|date',
             'nohp' => 'required|string|max:16',

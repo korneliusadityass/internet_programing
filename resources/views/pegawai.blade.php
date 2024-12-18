@@ -32,7 +32,7 @@
                         <td>{{ $pgw->role ?? '-' }}</td>
                         <td>{{ $pgw->department ?? '-' }}</td>
                         <td>
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">EDIT</a>
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-warning">EDIT</a>
                             <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">Hapus</a>
                         </td>
                     </tr>
