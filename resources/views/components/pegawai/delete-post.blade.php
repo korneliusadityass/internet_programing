@@ -1,21 +1,18 @@
 <script>
 $('body').on('click', '#btn-delete-post', function () {
     let id = $(this).data('id');
-    console.log('ID yang akan dihapus:', id);  // Pastikan id terambil dengan benar
     let token = $("meta[name='csrf-token']").attr("content");
 
     Swal.fire({
     title: 'Apakah Kamu Yakin?',
     text: "Ingin menghapus data ini!",
-    icon: 'warning',
+    type: 'warning',
     showCancelButton: true,
     cancelButtonColor: '#d33',
     cancelButtonText: 'TIDAK',
     confirmButtonColor: '#3085d6',
     confirmButtonText: 'YA, HAPUS!'
 }).then((result) => {
-    console.log('Hasil dari SweetAlert:', result); // Debugging hasil SweetAlert
-    console.log('result.value:', result.value); // Memeriksa apakah value ada
 
     // Ganti dari isConfirmed ke result.value
     if (result.value) {
@@ -31,15 +28,15 @@ $('body').on('click', '#btn-delete-post', function () {
                 console.log('Response:', response); // Debugging response
                 if (response.success) {
                     Swal.fire({
-                        icon: 'success',
+                        type: 'success',
                         title: response.message || 'Data berhasil dihapus!',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 3000
                     });
                     $(`#index_${id}`).remove(); // Hapus elemen baris tabel
                 } else {
                     Swal.fire({
-                        icon: 'error',
+                        type: 'error',
                         title: 'Gagal!',
                         text: response.message || 'Data tidak dapat dihapus.',
                     });
@@ -49,7 +46,7 @@ $('body').on('click', '#btn-delete-post', function () {
                 console.log('AJAX error:', error); // Debugging error
                 console.log('XHR:', xhr); // Periksa respons dari server
                 Swal.fire({
-                    icon: 'error',
+                    type: 'error',
                     title: 'Error!',
                     text: 'Terjadi kesalahan saat menghapus data.'
                 });

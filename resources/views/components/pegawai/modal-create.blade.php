@@ -270,6 +270,7 @@ $('#store').click(function(e) {
         //add message to alert
         $('#alert-email').html(error.responseJSON.email[0]);
     }
+
     if(error.responseJSON.password[0]) {
 
         //show alert

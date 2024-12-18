@@ -86,7 +86,7 @@ class PegawaiController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'nama'     => 'required',
-            'email' => 'required|,email',
+            'email' => 'required|email|unique:users,email',
             'alamat'   => 'required',
             'tanggal_lahir' => 'required|date',
             'nohp' => 'required|string|max:16',
@@ -96,8 +96,15 @@ class PegawaiController extends Controller
             'id_department'   => 'required'
         ]);
 
-        //check if validation fails
+        // Check if validation fails
         if ($validator->fails()) {
+            // Check if the error is for the email field
+            if ($validator->errors()->has('email')) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Email sudah terdaftar. Silakan gunakan email lain.'
+                ], 422);
+            }
             return response()->json($validator->errors(), 422);
         }
 
@@ -135,7 +142,7 @@ class PegawaiController extends Controller
         //define validation rules
         $validator = Validator::make($request->all(), [
             'nama'     => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email',
             'alamat'   => 'required',
             'tanggal_lahir' => 'required|date',
             'nohp' => 'required|string|max:16',
@@ -190,7 +197,7 @@ class PegawaiController extends Controller
         //return response
         return response()->json([
             'success' => true,
-            'message' => 'Data Pegawai Berhasil Dihapus!.',
+            'message' => 'Data Pegawai Berhasil Dihapus!',
         ]);
     }
 }

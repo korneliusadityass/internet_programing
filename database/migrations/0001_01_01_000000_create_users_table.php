@@ -20,7 +20,6 @@ return new class extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->string('nohp')->nullable();
             $table->string('password');
-            $table->string('status')->nullable();
             $table->integer('id_role')->nullable();
             $table->integer('id_department')->nullable();
             $table->rememberToken();
