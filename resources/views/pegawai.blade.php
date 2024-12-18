@@ -32,7 +32,7 @@
                         <td>{{ $pgw->role ?? '-' }}</td>
                         <td>{{ $pgw->department ?? '-' }}</td>
                         <td>
-                            <button class="btn btn-outline-warning">Edit</button>
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">EDIT</a>
                             <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger">Hapus</a>
                         </td>
                     </tr>
@@ -54,6 +54,6 @@
     </div>
 </div>
     @include('components.pegawai.modal-create')
-    {{-- @include('components.pegawai.modal-edit') --}}
+    @include('components.pegawai.modal-edit')
     @include('components.pegawai.delete-post')
 @endsection

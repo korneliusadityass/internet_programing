@@ -1,9 +1,9 @@
 <!-- Modal -->
 <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Siswa</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Pegawai</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,23 +20,58 @@
 
 
                 <div class="form-group">
-                    <label class="control-label">No. Induk</label>
-                    <input type="text" class="form-control" id="noinduk-edit">
-                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-noinduk-edit"></div>
+                    <label class="control-label">Email</label>
+                    <input type="email" class="form-control" id="email-edit">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-email-edit"></div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">NISN</label>
-                    <input type="text" class="form-control" id="nisn-edit">
-                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-nisn-edit"></div>
+                    <label class="control-label">Alamat</label>
+                    <input type="text" class="form-control" id="alamat-edit">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-alamat-edit"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="kelas" class="control-label">Kelas</label>
-                    <select class="form-control" id="kelas-edit">
+                    <label class="control-label">Gaji</label>
+                    <input type="text" class="form-control" id="gaji-edit">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-gaji-edit"></div>
+                </div>
+
+                <div class="form-group align-items-center">
+                    <label class="control-label me-2">Tanggal Lahir</label>
+                    <div class="d-flex align-items-center position-relative">
+                        <input type="text" class="date form-control" readonly style="background-color: white;" id="tanggal_lahir-edit">
+                        <i class="fa-solid fa-calendar-days ms-2 position-absolute" style="right: 10px;"></i>
+                    </div>
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-tanggal_lahir-edit"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">No Hp</label>
+                    <input type="text" class="form-control" id="nohp-edit">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-nohp-edit"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" id="password-edit">
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-password"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="role" class="control-label">Role</label>
+                    <select class="form-control" id="role-edit">
 
                     </select>
-                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-kelas-edit"></div>
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-role-edit"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="department" class="control-label">Department</label>
+                    <select class="form-control" id="department-edit">
+
+                    </select>
+                    <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-department-edit"></div>
                 </div>
 
             </div>
@@ -49,17 +84,15 @@
 </div>
 
 <script>
-    //button create post event
-    document.getElementById('noinduk-edit').addEventListener('input', function(event) {
-        this.value = this.value.replace(/[^0-9]/g, '');
-        this.value = this.value.substring(0, 4);
-    });
-    document.getElementById('nisn-edit').addEventListener('input', function(event) {
-        this.value = this.value.replace(/[^0-9]/g, '');
-        this.value = this.value.substring(0, 10);
-    });
     $('body').on('click', '#btn-edit-post', function () {
         let post_id = $(this).data('id');
+        console.log('ID yang akan dihapus:', post_id);
+        moment.updateLocale('id', {
+            months: [
+                    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+                ]
+        });
         // Fetch detail post with ajax
         $.ajax({
             url: `/pegawai/${post_id}`,
@@ -69,68 +102,117 @@
                 // Fill data to form
                 $('#post_id').val(response.data.id);
                 $('#nama-edit').val(response.data.nama);
-                $('#noinduk-edit').val(response.data.noinduk);
-                $('#nisn-edit').val(response.data.nisn);
+                $('#email-edit').val(response.data.email);
+                $('#alamat-edit').val(response.data.alamat);
+                $('#gaji-edit').val(response.data.gaji);
+                $('#password-edit').val(response.data.password);
+                $('#tanggal_lahir-edit').val(moment(response.data.tanggal_lahir).locale('id').format('DD MMMM YYYY'));
+                $('#nohp-edit').val(response.data.nohp);
 
                 // Open modal
                 $('#modal-edit').modal('show');
 
-                // Fetch kelas data
+                // Fetch role data
                 $.ajax({
-                    url: '/carikelas',
+                    url: '/carirole',
                     type: 'GET',
-                    success: function(kelasResponse) {
-                        let kelasDropdown = $('#kelas-edit');
-                        kelasDropdown.empty(); // Clear existing options
+                    success: function(roleResponse) {
+                        let roleDropdown = $('#role-edit');
+                        roleDropdown.empty(); // Clear existing options
 
                         // Populate dropdown with data from response
-                        kelasResponse.data.forEach(function(kelas) {
-                            let option = `<option value="${kelas.id}" ${kelas.id === response.data.id_kelas ? 'selected' : ''}>${kelas.nama} - ${kelas.jurusan}</option>`;
-                            kelasDropdown.append(option);
+                        roleResponse.data.forEach(function(role) {
+                            let option = `<option value="${role.id}" ${role.id === response.data.id_role ? 'selected' : ''}>${role.nama}</option>`;
+                            roleDropdown.append(option);
                         });
                     },
                     error: function(error) {
-                        console.error('Error fetching kelas data', error);
+                        console.error('Error fetching role data', error);
+                    }
+                });
+                $.ajax({
+                    url: '/caridepartment',
+                    type: 'GET',
+                    success: function(departmentResponse) {
+                        let departmentDropdown = $('#department-edit');
+                        departmentDropdown.empty(); // Clear existing options
+
+                        // Populate dropdown with data from response
+                        departmentResponse.data.forEach(function(department) {
+                            let option = `<option value="${department.id}" ${department.id === response.data.id_department ? 'selected' : ''}>${department.nama}</option>`;
+                            departmentDropdown.append(option);
+                        });
+                    },
+                    error: function(error) {
+                        console.error('Error fetching department data', error);
                     }
                 });
             },
             error: function(error) {
-                console.error('Error fetching siswa data', error);
+                console.error('Error fetching pegawai data', error);
             }
         });
     });
+   // Month mapping for conversion
+const months = {
+    'Januari': 1, 'Februari': 2, 'Maret': 3, 'April': 4, 'Mei': 5, 'Juni': 6,
+    'Juli': 7, 'Agustus': 8, 'September': 9, 'Oktober': 10, 'November': 11, 'Desember': 12
+};
 
-    //action update post
-    $('#update').click(function(e) {
-        e.preventDefault();
+$('#update').click(function(e) {
+    e.preventDefault();
 
-        //define variable
-        let post_id = $('#post_id').val();
-        let nama   = $('#nama-edit').val();
-        let noinduk = $('#noinduk-edit').val();
-        let nisn = $('#nisn-edit').val();
-        let id_kelas = $('#kelas-edit').val();
-        let token   = $("meta[name='csrf-token']").attr("content");
+    // Get the date value from the input field
+    let tanggal_lahir = $('#tanggal_lahir-edit').val();
 
-        //ajax
-        $.ajax({
+    // Split the date string into its components (day, month, year)
+    let dateParts = tanggal_lahir.split(' ');
 
-            url: `/siswa/${post_id}`,
-            type: "PUT",
-            cache: false,
-            data: {
-                "nama": nama,
-                "noinduk": noinduk,
-                "nisn": nisn,
-                "id_kelas": id_kelas,
-                "_token": token
-            },
+    // Ensure there are 3 parts: day, month, and year
+    if (dateParts.length === 3) {
+        let day = dateParts[0];  // Day (DD)
+        let monthName = dateParts[1];  // Month (e.g., 'Desember')
+        let year = dateParts[2];  // Year (YYYY)
+
+        // Get the numeric month value from the month name
+        let month = months[monthName];
+
+        if (month) {
+            // Construct the formatted date as 'YYYY-MM-DD'
+            let formattedTanggalLahir = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+            // Log the formatted date
+            console.log("Formatted Tanggal Lahir: " + formattedTanggalLahir);
+
+            // Check if the date is valid
+            if (!moment(formattedTanggalLahir, 'YYYY-MM-DD', true).isValid()) {
+                console.error('Invalid date format');
+                return;  // Stop execution if the date is invalid
+            }
+
+            // Proceed with the AJAX call if the date is valid
+            $.ajax({
+                url: `/pegawai/${post_id}`,
+                type: "PUT",
+                cache: false,
+                data: {
+                    "nama": $('#nama-edit').val(),
+                    "alamat": $('#alamat-edit').val(),
+                    "email": $('#email-edit').val(),
+                    "nohp": $('#nohp-edit').val(),
+                    "tanggal_lahir": formattedTanggalLahir,
+                    "gaji": $('#gaji-edit').val(),
+                    "password": $('#password-edit').val(),
+                    "id_role": $('#role-edit').val(),
+                    "id_department": $('#department-edit').val(),
+                    "_token": $("meta[name='csrf-token']").attr("content")
+                },
             success:function(response){
 
                 //show success message
                 Swal.fire({
                     type: 'success',
-                    icon: 'success',
+                    type: 'success',
                     title: `${response.message}`,
                     showConfirmButton: false,
                     timer: 3000
@@ -139,15 +221,19 @@
                 //data post
                 let post = `
                     <tr id="index_${response.data.id}">
-                        <td>${response.data.nama}</td>
-                        <td>${response.data.noinduk}</td>
-                        <td>${response.data.nisn}</td>
-                        <td>${response.data.kelas.nama} - ${response.data.kelas.jurusan}</td>
-                        <td class="text-center">
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="${response.data.id}" class="btn btn-primary btn-sm">EDIT</a>
-                            <a href="javascript:void(0)" id="btn-delete-post" data-id="${response.data.id}" class="btn btn-danger btn-sm">DELETE</a></td>
-                        </td>
-                    </tr>
+                            <td>${response.data.nama}</td>
+                            <td>${response.data.email}</td>
+                            <td>${response.data.alamat.length > 20 ? response.data.alamat.substring(0, 20) + ' ...' : response.data.alamat}</td>
+                            <td>${response.data.gaji}</td>
+                            <td>${moment(response.data.tanggal_lahir).locale('id').format('DD MMMM YYYY')}</td>
+                            <td>${response.data.nohp}</td>
+                            <td>${response.data.role.nama}</td>
+                            <td>${response.data.department.nama}</td>
+                            <td class="text-center">
+                                <a href="javascript:void(0)" id="btn-edit-post" data-id="${response.data.id}" class="btn btn-sm btn-outline-warning">EDIT</a>
+                                <a href="javascript:void(0)" id="btn-delete-post" data-id="${response.data.id}" class="btn btn-sm btn-outline-danger">DELETE</a>
+                            </td>
+                        </tr>
                 `;
 
                 //append to post data
@@ -159,51 +245,41 @@
 
             },
             error:function(error){
-
-                if(error.responseJSON.nama[0]) {
-
-                    //show alert
-                    $('#alert-nama-edit').removeClass('d-none');
-                    $('#alert-nama-edit').addClass('d-block');
-
-                    //add message to alert
-                    $('#alert-nama-edit').html(error.responseJSON.nama[0]);
+                if (error.responseJSON.nama && error.responseJSON.nama[0]) {
+                    $('#alert-nama-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.nama[0]);
+                }
+                if (error.responseJSON.email && error.responseJSON.email[0]) {
+                    $('#alert-email-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.email[0]);
+                }
+                if (error.responseJSON.alamat && error.responseJSON.alamat[0]) {
+                    $('#alert-alamat-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.alamat[0]);
+                }
+                if (error.responseJSON.password && error.responseJSON.password[0]) {
+                    $('#alert-password').removeClass('d-none').addClass('d-block').html(error.responseJSON.password[0]);
+                }
+                if (error.responseJSON.nohp && error.responseJSON.nohp[0]) {
+                    $('#alert-nohp-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.nohp[0]);
+                }
+                if (error.responseJSON.gaji && error.responseJSON.gaji[0]) {
+                    $('#alert-gaji-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.gaji[0]);
+                }
+                if (error.responseJSON.id_role && error.responseJSON.id_role[0]) {
+                    $('#alert-role-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.id_role[0]);
+                }
+                if (error.responseJSON.id_department && error.responseJSON.id_department[0]) {
+                    $('#alert-department-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.id_department[0]);
                 }
 
-                if(error.responseJSON.noinduk[0]) {
-
-                    //show alert
-                    $('#alert-noinduk-edit').removeClass('d-none');
-                    $('#alert-noinduk-edit').addClass('d-block');
-
-                    //add message to alert
-                    $('#alert-noinduk-edit').html(error.responseJSON.noinduk[0]);
-                }
-
-                if(error.responseJSON.nisn[0]) {
-
-                    //show alert
-                    $('#alert-nisn-edit').removeClass('d-none');
-                    $('#alert-nisn-edit').addClass('d-block');
-
-                    //add message to alert
-                    $('#alert-nisn-edit').html(error.responseJSON.nisn[0]);
-                }
-
-                if(error.responseJSON.id_kelas[0]) {
-
-                    //show alert
-                    $('#alert-kelas-edit').removeClass('d-none');
-                    $('#alert-kelas-edit').addClass('d-block');
-
-                    //add message to alert
-                    $('#alert-kelas-edit').html(error.responseJSON.id_kelas[0]);
-                }
 
             }
 
-        });
-
-    });
+                        });
+                    } else {
+                        console.error('Invalid month name');
+                    }
+                } else {
+                    console.error('Invalid date format');
+                }
+            });
 
 </script>

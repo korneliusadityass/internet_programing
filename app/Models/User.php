@@ -14,7 +14,7 @@ class User extends Authenticatable
     use HasFactory;
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $fillable = ['nama', 'email', 'alamat', 'gaji', 'tanggal_lahir', 'nohp', 'password', 'status','id_role','id_department'];
+    protected $fillable = ['nama', 'email', 'alamat', 'gaji', 'tanggal_lahir', 'nohp', 'password', 'id_role','id_department'];
 
     public function role()
     {

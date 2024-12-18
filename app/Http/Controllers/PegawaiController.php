@@ -130,37 +130,48 @@ class PegawaiController extends Controller
     //  * @param  mixed $post
     //  * @return void
     //  */
-    // public function update(Request $request, Siswa $siswa)
-    // {
-    //     //define validation rules
-    //     $validator = Validator::make($request->all(), [
-    //         'nama'     => 'required',
-    //         'noinduk'   => 'required',
-    //         'nisn'   => 'required',
-    //         'id_kelas'   => 'required'
-    //     ]);
+    public function update(Request $request, User $pegawai)
+    {
+        //define validation rules
+        $validator = Validator::make($request->all(), [
+            'nama'     => 'required',
+            'email' => 'required|email|unique:users,email',
+            'alamat'   => 'required',
+            'tanggal_lahir' => 'required|date',
+            'nohp' => 'required|string|max:16',
+            'password'   => 'required',
+            'gaji' => 'required|numeric',
+            'id_role'   => 'required',
+            'id_department'   => 'required'
+        ]);
 
-    //     //check if validation fails
-    //     if ($validator->fails()) {
-    //         return response()->json($validator->errors(), 422);
-    //     }
+        //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
-    //     //create post
-    //     $siswa->update([
-    //         'nama'     => $request->nama,
-    //         'noinduk'   => $request->noinduk,
-    //         'id_kelas'   => $request->id_kelas
-    //     ]);
+        //create post
+        $pegawai->update([
+            'nama'     => $request->nama,
+            'email'     => $request->email,
+            'alamat'   => $request->alamat,
+            'password'  => Hash::make($request->password),
+            'nohp'   => $request->nohp,
+            'gaji'   => $request->gaji,
+            'tanggal_lahir'   => $request->tanggal_lahir,
+            'id_role'   => $request->id_role,
+            'id_department'   => $request->id_department
+        ]);
 
-    //     $siswa->load('kelas');
+        $pegawai->load('role', 'department');
 
-    //     //return response
-    //     return response()->json([
-    //         'success' => true,
-    //         'message' => 'Data Berhasil Diudapte!',
-    //         'data'    => $siswa
-    //     ]);
-    // }
+        //return response
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Berhasil Diudapte!',
+            'data'    => $pegawai
+        ]);
+    }
 
     /**
      * destroy

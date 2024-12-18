@@ -139,18 +139,14 @@ $('#store').click(function(e) {
     let email = $('#email').val();
     let alamat = $('#alamat').val();
     let gaji = $('#gaji').val();
-    // Get the value of tanggal_lahir from the input field
-let tanggal_lahir = $('#tanggal_lahir').val();
-        let nohp = $('#nohp').val();
-            let password = $('#password').val();
-            let id_role = $('#role').val();
-            let id_department = $('#department').val();
-            let token   = $("meta[name='csrf-token']").attr("content");
+    let tanggal_lahir = $('#tanggal_lahir').val();
+    let nohp = $('#nohp').val();
+    let password = $('#password').val();
+    let id_role = $('#role').val();
+    let id_department = $('#department').val();
+    let token   = $("meta[name='csrf-token']").attr("content");
 
-
-
-// Log the formatted date
-
+    // Log the formatted date
     const months = {
         'Januari': 1, 'Februari': 2, 'Maret': 3, 'April': 4, 'Mei': 5, 'Juni': 6,
         'Juli': 7, 'Agustus': 8, 'September': 9, 'Oktober': 10, 'November': 11, 'Desember': 12
@@ -245,91 +241,91 @@ let tanggal_lahir = $('#tanggal_lahir').val();
                 },
                 error:function(error){
 
-if(error.responseJSON.nama[0]) {
+    if(error.responseJSON.nama[0]) {
 
-    //show alert
-    $('#alert-nama').removeClass('d-none');
-    $('#alert-nama').addClass('d-block');
+        //show alert
+        $('#alert-nama').removeClass('d-none');
+        $('#alert-nama').addClass('d-block');
 
-    //add message to alert
-    $('#alert-nama').html(error.responseJSON.nama[0]);
-}
-
-if(error.responseJSON.alamat[0]) {
-
-    //show alert
-    $('#alert-alamat').removeClass('d-none');
-    $('#alert-alamat').addClass('d-block');
-
-    //add message to alert
-    $('#alert-alamat').html(error.responseJSON.alamat[0]);
-}
-
-if(error.responseJSON.email[0]) {
-
-    //show alert
-    $('#alert-email').removeClass('d-none');
-    $('#alert-email').addClass('d-block');
-
-    //add message to alert
-    $('#alert-email').html(error.responseJSON.email[0]);
-}
-if(error.responseJSON.password[0]) {
-
-    //show alert
-    $('#alert-password').removeClass('d-none');
-    $('#alert-password').addClass('d-block');
-
-    //add message to alert
-    $('#alert-password').html(error.responseJSON.email[0]);
-}
-if(error.responseJSON.nohp[0]) {
-
-    //show alert
-    $('#alert-nohp').removeClass('d-none');
-    $('#alert-nohp').addClass('d-block');
-
-    //add message to alert
-    $('#alert-nohp').html(error.responseJSON.email[0]);
-}
-if(error.responseJSON.gaji[0]) {
-
-    //show alert
-    $('#alert-gaji').removeClass('d-none');
-    $('#alert-gaji').addClass('d-block');
-
-    //add message to alert
-    $('#alert-gaji').html(error.responseJSON.email[0]);
-}
-
-if(error.responseJSON.id_role[0]) {
-
-    //show alert
-    $('#alert-role').removeClass('d-none');
-    $('#alert-role').addClass('d-block');
-
-    //add message to alert
-    $('#alert-role').html(error.responseJSON.id_role[0]);
-}
-if(error.responseJSON.id_department[0]) {
-
-    //show alert
-    $('#alert-deparid_department').removeClass('d-none');
-    $('#alert-deparid_department').addClass('d-block');
-
-    //add message to alert
-    $('#alert-deparid_department').html(error.responseJSON.id_role[0]);
-}
-
-}
-
-            });
-        } else {
-            console.error('Invalid month name');
-        }
-    } else {
-        console.error('Invalid date format');
+        //add message to alert
+        $('#alert-nama').html(error.responseJSON.nama[0]);
     }
-});
+
+    if(error.responseJSON.alamat[0]) {
+
+        //show alert
+        $('#alert-alamat').removeClass('d-none');
+        $('#alert-alamat').addClass('d-block');
+
+        //add message to alert
+        $('#alert-alamat').html(error.responseJSON.alamat[0]);
+    }
+
+    if(error.responseJSON.email[0]) {
+
+        //show alert
+        $('#alert-email').removeClass('d-none');
+        $('#alert-email').addClass('d-block');
+
+        //add message to alert
+        $('#alert-email').html(error.responseJSON.email[0]);
+    }
+    if(error.responseJSON.password[0]) {
+
+        //show alert
+        $('#alert-password').removeClass('d-none');
+        $('#alert-password').addClass('d-block');
+
+        //add message to alert
+        $('#alert-password').html(error.responseJSON.email[0]);
+    }
+    if(error.responseJSON.nohp[0]) {
+
+        //show alert
+        $('#alert-nohp').removeClass('d-none');
+        $('#alert-nohp').addClass('d-block');
+
+        //add message to alert
+        $('#alert-nohp').html(error.responseJSON.email[0]);
+    }
+    if(error.responseJSON.gaji[0]) {
+
+        //show alert
+        $('#alert-gaji').removeClass('d-none');
+        $('#alert-gaji').addClass('d-block');
+
+        //add message to alert
+        $('#alert-gaji').html(error.responseJSON.email[0]);
+    }
+
+    if(error.responseJSON.id_role[0]) {
+
+        //show alert
+        $('#alert-role').removeClass('d-none');
+        $('#alert-role').addClass('d-block');
+
+        //add message to alert
+        $('#alert-role').html(error.responseJSON.id_role[0]);
+    }
+    if(error.responseJSON.id_department[0]) {
+
+        //show alert
+        $('#alert-deparid_department').removeClass('d-none');
+        $('#alert-deparid_department').addClass('d-block');
+
+        //add message to alert
+        $('#alert-deparid_department').html(error.responseJSON.id_role[0]);
+    }
+
+    }
+
+                });
+            } else {
+                console.error('Invalid month name');
+            }
+        } else {
+            console.error('Invalid date format');
+        }
+    });
 
 </script>
