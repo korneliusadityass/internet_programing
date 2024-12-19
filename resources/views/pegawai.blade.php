@@ -22,7 +22,7 @@
                 <th>No HP</th>
                 <th>Role</th>
                 <th>Department</th>
-                <th>action</th>
+                <th @if(Auth::user()->id_role == 5) style="display:none;" @endif>action</th>
               </tr>
             </thead>
             <tbody id="table-posts">
@@ -37,8 +37,18 @@
                         <td>{{ $pgw->role ?? '-' }}</td>
                         <td>{{ $pgw->department ?? '-' }}</td>
                         <td>
-                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-warning"
-                                @if(in_array($pgw->id_role, [1, 2, 3, 5])) hidden @endif>EDIT</a>
+                            <a href="javascript:void(0)" id="btn-edit-post" data-id="{{ $pgw->id }}"
+                                class="btn btn-sm btn-outline-warning"
+                                @if(Auth::user()->id_role == 1 ||
+                                    (Auth::user()->id_role == 2 && $pgw->id_role != 1) ||
+                                    (Auth::user()->id_role == 3 && Auth::user()->id_department == $pgw->id_department) ||
+                                    (Auth::user()->id_role == 4 && Auth::user()->id == $pgw->id))
+                                >
+                                    EDIT
+                                @else
+                                    style="display:none;"
+                                @endif
+                            </a>
                             <a href="javascript:void(0)" id="btn-delete-post" data-id="{{ $pgw->id }}" class="btn btn-sm btn-outline-danger" style="{{ in_array(Auth::user()->id_role, [1, 2]) ? '' : 'display:none;' }}">Hapus</a>
                         </td>
                     </tr>

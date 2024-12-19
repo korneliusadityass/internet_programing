@@ -89,6 +89,9 @@
         $('#gaji-edit').on('input', function () {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
+        $('#nohp-edit').on('input', function () {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
         console.log('ID yang akan diedit:', post_id);
         moment.updateLocale('id', {
             months: [
@@ -194,7 +197,7 @@ $('#update').click(function(e) {
             }
 
             // Proceed with the AJAX call if the date is valid
-            let post_id = $('#post_id').val(); 
+            let post_id = $('#post_id').val();
             $.ajax({
                 url: `/pegawai/${post_id}`,
                 type: "PUT",
@@ -249,33 +252,16 @@ $('#update').click(function(e) {
 
             },
             error:function(error){
-                if (error.responseJSON.nama && error.responseJSON.nama[0]) {
-                    $('#alert-nama-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.nama[0]);
-                }
-                if (error.responseJSON.email && error.responseJSON.email[0]) {
-                    $('#alert-email-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.email[0]);
-                }
-                if (error.responseJSON.alamat && error.responseJSON.alamat[0]) {
-                    $('#alert-alamat-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.alamat[0]);
-                }
-                if (error.responseJSON.password && error.responseJSON.password[0]) {
-                    $('#alert-password').removeClass('d-none').addClass('d-block').html(error.responseJSON.password[0]);
-                }
-                if (error.responseJSON.nohp && error.responseJSON.nohp[0]) {
-                    $('#alert-nohp-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.nohp[0]);
-                }
-                if (error.responseJSON.gaji && error.responseJSON.gaji[0]) {
-                    $('#alert-gaji-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.gaji[0]);
-                }
-                if (error.responseJSON.id_role && error.responseJSON.id_role[0]) {
-                    $('#alert-role-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.id_role[0]);
-                }
-                if (error.responseJSON.id_department && error.responseJSON.id_department[0]) {
-                    $('#alert-department-edit').removeClass('d-none').addClass('d-block').html(error.responseJSON.id_department[0]);
-                }
+                // Clear previous alerts
+            $('#alert-deparid_department').removeClass('d-none');
+            $('#alert-deparid_department').addClass('d-block');
 
-
-            }
+            if (error.responseJSON && error.responseJSON.errors) {
+                // Loop through the errors and display them
+                for (const [key, value] of Object.entries(error.responseJSON.errors)) {
+                    $(`#alert-${key}`).removeClass('d-none').addClass('d-block').html(value[0]);
+                }
+            }}
 
                         });
                     } else {
