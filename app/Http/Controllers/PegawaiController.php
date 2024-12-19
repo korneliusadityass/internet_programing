@@ -108,44 +108,40 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //define validation rules
+        // Define validation rules
         $validator = Validator::make($request->all(), [
             'nama'     => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email'    => 'required|email|unique:users,email',
             'alamat'   => 'required',
             'tanggal_lahir' => 'required|date',
-            'nohp' => 'required|string|max:16',
-            'gaji' => 'required|numeric',
-            'id_role'   => 'required'
+            'nohp'     => 'required|string|max:16',
+            'gaji'     => 'required|numeric',
+            'id_role'  => 'required'
         ]);
 
         // Check if validation fails
         if ($validator->fails()) {
-            // Check if the error is for the email field
-            if ($validator->errors()->has('email')) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Email sudah terdaftar. Silakan gunakan email lain.'
-                ], 422);
-            }
-            return response()->json($validator->errors(), 422);
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors()
+            ], 422);
         }
 
-        //create post
+        // Create post
         $post = User::create([
             'nama'     => $request->nama,
-            'email'     => $request->email,
+            'email'    => $request->email,
             'alamat'   => $request->alamat,
-            'password'  => Hash::make($request->password),
-            'nohp'   => $request->nohp,
-            'gaji'   => $request->gaji,
-            'tanggal_lahir'   => $request->tanggal_lahir,
-            'id_role'   => $request->id_role,
-            'id_department'   => $request->id_department
+            'password' => Hash::make($request->password),
+            'nohp'     => $request->nohp,
+            'gaji'     => $request->gaji,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'id_role'  => $request->id_role,
+            'id_department' => $request->id_department
         ]);
         $post->load('role', 'department');
 
-        //return response
+        // Return response
         return response()->json([
             'success' => true,
             'message' => 'Data Berhasil Disimpan!',
