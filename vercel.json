@@ -14,7 +14,8 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
-        }
+        },
+        { "src": "/(.*)", "dest": "/public/$1" }
     ],
     "env": {
         "APP_ENV": "production",
@@ -31,10 +32,11 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "kn31s.h.filess.io",
+        "DB_HOST": "ij7r7.h.filess.io",
         "DB_PORT": "3306",
-        "DB_DATABASE": "dbpegawaisingajaya_selection",
-        "DB_USERNAME": "dbpegawaisingajaya_selection"
+        "DB_DATABASE": "dbpegawaisingajaya_necessary",
+        "DB_USERNAME": "dbpegawaisingajaya_necessary",
+        "DB_PASSWORD": "38a9228eb67777e132f53e45ec53b0a0335cc66b"
     },
     "outputDirectory": "public"
 }

@@ -9,14 +9,15 @@
 
   <!-- CSRF Token -->
   <meta name="_token" content="uNVSm5nA5TkDq47DOb8dni7iHdaNQi8gYkR18cq7">
-  <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+  <link rel="shortcut icon" href="https://idoxbku.sufydely.com/assets/favicon.ico">
 
   <!-- plugin css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+  <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/@mdi/font/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/perfect-scrollbar/perfect-scrollbar.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-
+  <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/css/app.css">
   <!-- end plugin css -->
 
     <!-- <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/plugin.css"> -->
@@ -105,9 +106,9 @@ input:checked + .slider:before {
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
     <a class="navbar-brand brand-logo" href="dashboard">
-    <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" style="height: 40px!important; width: 100%!important;" alt="logo"></a>
+    <img src="https://idoxbku.sufydely.com/assets/images/PT_SINGA_JAYA_GROUP.png" style="height: 40px!important; width: 100%!important;" alt="logo"></a>
     <a class="navbar-brand brand-logo-mini" href="dashboard">
-      <img src="{{ asset('assets/images/logo.jpg') }}" style="height: 40px!important; width: 100%!important;" alt="logo"> </a>
+      <img src="https://idoxbku.sufydely.com/assets/images/logo.jpg" style="height: 40px!important; width: 100%!important;" alt="logo"> </a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -214,24 +215,24 @@ input:checked + .slider:before {
     });
 </script> -->
   <!-- base js -->
-  {{-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/js/app.js"></script>
-  <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/js/app.js"></script> -->
+  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script> -->
   <!-- end base js -->
 
   <!-- plugin js -->
-    <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/chartjs/chart.min.js"></script>
-  <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/chartjs/chart.min.js"></script> -->
+  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script> -->
   <!-- end plugin js -->
 
   <!-- common js -->
-  <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/off-canvas.js"></script>
-  <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/hoverable-collapse.js"></script>
+  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/off-canvas.js"></script> -->
+  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/hoverable-collapse.js"></script> -->
   <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/misc.js"></script>
-  <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/settings.js"></script>
-  <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/todolist.js"></script>
+  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/settings.js"></script> -->
+  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/todolist.js"></script> -->
   <!-- end common js -->
-
-    <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/dashboard.js"></script> --}}
+<!--
+    <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/dashboard.js"></script> -->
     <script type="text/javascript">
         // Konfigurasi bahasa Indonesia
         $.fn.datepicker.dates['id'] = {

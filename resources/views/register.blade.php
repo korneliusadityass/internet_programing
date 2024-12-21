@@ -8,20 +8,22 @@
     <title>SJG || {{  $title }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/ionicons/dist/css/ionicons.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.addons.css') }}">
+    <link rel="stylesheet" href="https://idoxbku.sufydely.com/assets/vendor/iconfonts/iconicons/dist/css/ionicons.css">
+    <link rel="stylesheet" href="https://idoxbku.sufydely.com/assets/vendor/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://idoxbku.sufydely.com/assets/vendor/css/vendor.bundle.base.css>
+    <link rel="stylesheet" href="https://idoxbku.sufydely.com/assets/vendor/css/vendor.bundle.addons.css">
+    <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-laravel-pro/template/css/app.css">
+    <link media="all" type="text/css" rel="stylesheet" href="https://demo.bootstrapdash.com/star-admin-free/jquery/src/assets/css/shared/style.css">
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="../../assets/css/shared/style.css">
+    <link rel="stylesheet" href="https://idoxbku.sufydely.com/assets/images/favicon.ico">
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../assets/css/demo_1/style.css">
+    <link rel="stylesheet" href="https://idoxbku.sufydely.com/assets/css/demo1/style.css">
     <!-- End Layout styles -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="https://idoxbku.sufydely.com/assets/images/favicon.ico">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
   <body>
@@ -81,14 +83,14 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
-    <script src="{{ asset('assets/vendors/js/vendor.bundle.addons.js') }}"></script>
+    <script src="https://idoxbku.sufydely.com/assets/vendor/js/vendor.bundle.addons.js"></script>
+    <script src="https://idoxbku.sufydely.com/assets/vendor/js/vendor.bundle.addons.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
-    <script src="{{ asset('assets/js/shared/off-canvas.js') }}"></script>
-    <script src="{{ asset('assets/js/shared/misc.js') }}"></script>
+    <script src="https://idoxbku.sufydely.com/assets/js/shared/off-canvas.js"></script>
+    <script src="https://idoxbku.sufydely.com/assets/js/shared/misc.js"></script>
     <!-- endinject -->
-    <script src="{{ asset('assets/js/shared/jquery.cookie.js') }}"></script>
+    <script src="https://idoxbku.sufydely.com/assets/js/shared/jquery.cookie.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>

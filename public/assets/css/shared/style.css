@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------
  [Master Stylesheet]
 
-  Project:	Star Admin Free 
+  Project:	Star Admin Free
   Version:	3.5
 -------------------------------------------------------------------*/
 /*-------------------------------------------------------------------
@@ -9722,10 +9722,10 @@ ul {
 .auth {
   min-height: 100vh; }
   .auth.auth-bg-1 {
-    background: url("../../images/auth/login_1.jpg");
+    background: url("https://demo.bootstrapdash.com/star-admin-free/jquery/src/assets/images/auth/login_1.jpg");
     background-size: cover; }
   .auth.register-bg-1 {
-    background: url("../../images/auth/register.jpg") center center no-repeat;
+    background: url("https://demo.bootstrapdash.com/star-admin-free/jquery/src/assets/images/auth/register.jpg") center center no-repeat;
     background-size: cover; }
   .auth.theme-one .auto-form-wrapper {
     background: #fff;

@@ -62,7 +62,7 @@
         <div class="container">
             <!-- Logo Utama -->
             <div class="logo-utama" style="margin: 20px">
-                <img src="{{ asset('assets/images/PT_SINGA_JAYA_GROUP.png') }}" alt="logo" style="max-width: 600px;">
+            <img src="https://idoxbku.sufydely.com/assets/images/PT_SINGA_JAYA_GROUP.png" alt="logo" style="max-width: 600px;">
             </div>
 
             <!-- About Us -->
@@ -75,7 +75,7 @@
 
             <!-- Gambar Bawah -->
             <div class="gambar-bawah" style="margin: 40px 0px 50px 0px;">
-                <img src="{{ asset('assets/images/istockphoto-1285583141-170667a.jpg') }}" alt="gambar3">
+                <img src="https://idoxbku.sufydely.com/assets/images/istockphoto-1285583141-170667a.jpg" alt="gambar3">
             </div>
         </div>
     </div>
