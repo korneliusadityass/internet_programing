@@ -129,7 +129,7 @@ input:checked + .slider:before {
       </li>
     </ul>
     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-        <i class="fa-solid fa-caret-down"></i>
+        <i class="fa-solid fa-bars"></i>
     </button>
   </div>
 </nav>
@@ -225,7 +225,7 @@ input:checked + .slider:before {
   <!-- end plugin js -->
 
   <!-- common js -->
-  <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/off-canvas.js"></script> -->
+  <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/off-canvas.js"></script>
   <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/hoverable-collapse.js"></script> -->
   <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/misc.js"></script>
   <!-- <script src="https://demo.bootstrapdash.com/star-laravel-pro/template/assets/js/settings.js"></script> -->

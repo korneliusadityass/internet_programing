@@ -61,21 +61,21 @@
     <div class="card">
         <div class="container">
             <!-- Logo Utama -->
-            <div class="logo-utama" style="margin: 20px">
-            <img src="https://idoxbku.sufydely.com/assets/images/PT_SINGA_JAYA_GROUP.png" alt="logo" style="max-width: 600px;">
+            <div class="logo-utama" style="margin: 3%">
+            <img src="https://idoxbku.sufydely.com/assets/images/PT_SINGA_JAYA_GROUP.png" alt="logo" style="max-width: 70%;">
             </div>
 
             <!-- About Us -->
             <div class="about-us">
-                <h1 style="margin: 40px 0px 40px 0px;">About Us</h1>
+                <h1 style="margin-top: 3%; margin-bottom: 3%;">About Us</h1>
                 <strong>Laurensius Patrix Ambarura</strong> - 18.K1.0066 <br>
                 <strong>Vincencius Ferrer Iglasias</strong> - 18.K1.0068 <br>
                 <strong>Yanto Yordan Kotouki</strong> - 23.K1.0055 <br>
             </div>
 
             <!-- Gambar Bawah -->
-            <div class="gambar-bawah" style="margin: 40px 0px 50px 0px;">
-                <img src="https://idoxbku.sufydely.com/assets/images/istockphoto-1285583141-170667a.jpg" alt="gambar3">
+            <div class="gambar-bawah" style="margin-top: 3%; margin-bottom: 3%;">
+                <img src="https://idoxbku.sufydely.com/assets/images/istockphoto-1285583141-170667a.jpg" alt="gambar3" style="max-width: 100%">
             </div>
         </div>
     </div>
